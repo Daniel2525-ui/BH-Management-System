@@ -13,6 +13,7 @@ A simple Boarding House Management System built using React.
 - JavaScript
 - Vite
 - CSS
+- TailwindCSS
 
 ## Purpose
 This project helps manage boarding house operations like room assignment and tenant tracking in a simple and organized way.
