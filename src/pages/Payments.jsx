@@ -2,7 +2,7 @@ import React from "react";
 import PaymentForm from "../components/payments/PaymentForm.jsx";
 import PaymentTable from "../components/payments/PaymentTable.jsx";
 
-function Payments({ tenants, rooms, payments }) {
+function Payments({ tenants, rooms, payments, setPayments }) {
   return (
     <div className="space-y-8">
       {/* Page Header */}
@@ -13,7 +13,7 @@ function Payments({ tenants, rooms, payments }) {
         </p>
       </div>
 
-      <PaymentForm tenants={tenants} rooms={rooms} />
+      <PaymentForm tenants={tenants} rooms={rooms} setPayments={setPayments} />
       <PaymentTable payments={payments} tenants={tenants} rooms={rooms} />
     </div>
   );
