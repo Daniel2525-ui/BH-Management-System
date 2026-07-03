@@ -3,7 +3,6 @@ import React from "react";
 const statusStyles = {
   Paid: "bg-emerald-50 text-emerald-600 ring-1 ring-emerald-200",
   Unpaid: "bg-red-50 text-red-500 ring-1 ring-red-200",
-  Pending: "bg-amber-50 text-amber-600 ring-1 ring-amber-200",
 };
 
 function PaymentRow({ tenant, room, rent, datePaid, status }) {

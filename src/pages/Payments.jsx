@@ -1,9 +1,8 @@
 import React from "react";
-import PaymentSummary from "../components/payments/PaymentSummary.jsx";
 import PaymentForm from "../components/payments/PaymentForm.jsx";
 import PaymentTable from "../components/payments/PaymentTable.jsx";
 
-function Payments() {
+function Payments({ tenants, rooms, payments }) {
   return (
     <div className="space-y-8">
       {/* Page Header */}
@@ -14,9 +13,8 @@ function Payments() {
         </p>
       </div>
 
-      <PaymentSummary />
-      <PaymentForm />
-      <PaymentTable />
+      <PaymentForm tenants={tenants} rooms={rooms} />
+      <PaymentTable payments={payments} tenants={tenants} rooms={rooms} />
     </div>
   );
 }

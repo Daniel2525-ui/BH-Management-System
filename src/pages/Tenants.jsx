@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import TenantCard from "../components/tenants/TenantCard";
+import PaymentForm from "../components/payments/PaymentForm";
 
 function Tenants({ tenants, setTenants }) {
   const [fullName, setFullName] = useState("");

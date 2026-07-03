@@ -8,6 +8,9 @@ import Tenants from "./pages/Tenants";
 import Payments from "./pages/Payments";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
+import PaymentForm from "./components/payments/PaymentForm.jsx";
+import PaymentRow from "./components/payments/PaymentRow.jsx";
+import PaymentTable from "./components/payments/PaymentTable.jsx";
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -29,7 +32,12 @@ function App() {
           />
           <Route
             path="/tenants"
-            element={<Tenants tenants={tenants} setTenants={setTenants} />}
+            element={
+              <Tenants
+                tenants={tenants}
+                setTenants={setTenants}
+              />
+            }
           />
           <Route
             path="/payments"

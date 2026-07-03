@@ -1,7 +1,12 @@
 import React from "react";
+import { useState } from "react";
 
-function PaymentForm() {
-  const tenants = ["Juan Dela Cruz", "Maria Santos", "Pedro Reyes"];
+function PaymentForm({ tenants, rooms }) {
+  const [selectedTenantId, setSelectedTenantId] = useState("");
+
+  const assignedRoom = rooms.find(
+    (room) => room.tenantId === selectedTenantId,
+  );
 
   return (
     <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
@@ -13,28 +18,33 @@ function PaymentForm() {
         {/* Tenant */}
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Tenant</label>
-          <select className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option>-- No Tenant Selected --</option>
-
-            {tenants.map((name) => (
-              <option key={name}>{name}</option>
+          <select
+            value={selectedTenantId}
+            onChange={(e) => setSelectedTenantId(e.target.value)}
+            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="">-- No Tenant Selected --</option>
+            {tenants.map((tenant) => (
+              <option key={tenant.id} value={tenant.id}>
+                {tenant.fullName}
+              </option>
             ))}
           </select>
         </div>
 
-        {/* Assigned Room (read-only, auto-filled later) */}
+        {/* Assigned Room */}
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Assigned Room</label>
           <div className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-500">
-            Room 101
+            {assignedRoom ? assignedRoom.roomNumber : "-- Unassigned Room --"}
           </div>
         </div>
 
-        {/* Monthly Rent (read-only, auto-filled later) */}
+        {/* Monthly Rent */}
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Monthly Rent</label>
           <div className="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-sm text-slate-500">
-            ₱3,500
+            {assignedRoom ? `₱${assignedRoom.rent}` : "₱0"}
           </div>
         </div>
 
