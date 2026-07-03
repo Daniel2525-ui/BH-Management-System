@@ -64,7 +64,7 @@ function Rooms({ rooms, setRooms, tenants }) {
       ),
     );
   };
-
+  
   const getTenantById = (tenantId) => {
     return tenants.find((tenant) => tenant.id === tenantId);
   };

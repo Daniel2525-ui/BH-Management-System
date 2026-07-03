@@ -12,6 +12,7 @@ import Settings from "./pages/Settings";
 function App() {
   const [rooms, setRooms] = useState([]);
   const [tenants, setTenants] = useState([]);
+  const [payments, setPayments] = useState([]);
 
   return (
     <div className="flex">
@@ -23,26 +24,24 @@ function App() {
           <Route
             path="/rooms"
             element={
-              <Rooms
-                rooms={rooms}
-                setRooms={setRooms}
-                tenants={tenants}
-                setTenants={setTenants}
-              />
+              <Rooms rooms={rooms} setRooms={setRooms} tenants={tenants} />
             }
           />
           <Route
             path="/tenants"
+            element={<Tenants tenants={tenants} setTenants={setTenants} />}
+          />
+          <Route
+            path="/payments"
             element={
-              <Tenants
+              <Payments
                 tenants={tenants}
-                setTenants={setTenants}
                 rooms={rooms}
-                setRooms={setRooms}
+                payments={payments}
+                setPayments={setPayments}
               />
             }
           />
-          <Route path="/payments" element={<Payments />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>

@@ -52,7 +52,7 @@ function RoomCard({ room, deleteRoom, tenantName, tenants, assignTenant }) {
         <button
           onClick={() => deleteRoom(room.id)}
           title="Delete Room"
-          className="ml-auto p-2 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+          className="ml-auto p-2 rounded-lg hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
         >
           <Trash2 size={16} />
         </button>
