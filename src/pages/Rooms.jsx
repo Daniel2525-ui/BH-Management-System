@@ -56,6 +56,17 @@ function Rooms({ rooms, setRooms, tenants }) {
   };
 
   const assignTenant = (roomId, tenantId) => {
+    if (tenantId !== "") {
+      const alreadyAssigned = rooms.some(
+        (room) => room.tenantId === tenantId && room.id !== roomId,
+      );
+
+      if (alreadyAssigned) {
+        alert("This tenant is already assigned to another room");
+        return;
+      }
+    }
+
     setRooms((prevRooms) =>
       prevRooms.map((room) =>
         room.id === roomId
@@ -64,7 +75,7 @@ function Rooms({ rooms, setRooms, tenants }) {
       ),
     );
   };
-  
+
   const getTenantById = (tenantId) => {
     return tenants.find((tenant) => tenant.id === tenantId);
   };
