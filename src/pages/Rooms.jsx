@@ -30,8 +30,7 @@ function Rooms({ rooms, setRooms, tenants }) {
     }
 
     const roomExists = rooms.some(
-      (room) =>
-        room.roomNumber.toLowerCase() === trimmedRoomNumber.toLowerCase(),
+      (room) => room.roomNumber === trimmedRoomNumber,
     );
 
     if (roomExists) {
@@ -54,11 +53,16 @@ function Rooms({ rooms, setRooms, tenants }) {
     setRent("");
     setErrors({});
   };
-  
+
   const deleteRoom = (id) => {
     if (!confirm("Delete Room?")) return;
 
     setRooms((prevRooms) => prevRooms.filter((room) => room.id !== id));
+  };
+
+  {/* Find tenant by it's Id for later to validate same tenant that is already assigned to a room */}
+  const getTenantById = (tenantId) => {
+    return tenants.find((tenant) => tenant.id === tenantId);
   };
 
   const assignTenant = (roomId, tenantId) => {
@@ -80,10 +84,6 @@ function Rooms({ rooms, setRooms, tenants }) {
           : room,
       ),
     );
-  };
-
-  const getTenantById = (tenantId) => {
-    return tenants.find((tenant) => tenant.id === tenantId);
   };
 
   return (

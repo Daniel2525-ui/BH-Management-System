@@ -6,6 +6,9 @@ function PaymentForm({ tenants, rooms, setPayments }) {
   const [datePaid, setDatePaid] = useState("");
   const [errors, setErrors] = useState({});
 
+  {
+    /* Find room by its id to identify which room was the selected Tenant's Name */
+  }
   const assignedRoom = rooms.find((room) => room.tenantId === selectedTenantId);
 
   const recordPayment = () => {
@@ -75,7 +78,7 @@ function PaymentForm({ tenants, rooms, setPayments }) {
             {assignedRoom ? assignedRoom.roomNumber : "-- No Room --"}
           </div>
         </div>
-          
+
         {/* Monthly Rent */}
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Monthly Rent</label>
