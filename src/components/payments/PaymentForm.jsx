@@ -56,9 +56,9 @@ function PaymentForm({ tenants, rooms, setPayments }) {
             className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="">-- No Tenant Selected --</option>
-            {tenants.map((tenant) => (
-              <option key={tenant.id} value={tenant.id}>
-                {tenant.fullName}
+            {tenants.map(({ id, fullName }) => (
+              <option key={id} value={id}>
+                {fullName}
               </option>
             ))}
           </select>
@@ -75,7 +75,7 @@ function PaymentForm({ tenants, rooms, setPayments }) {
             {assignedRoom ? assignedRoom.roomNumber : "-- No Room --"}
           </div>
         </div>
-
+          
         {/* Monthly Rent */}
         <div className="flex flex-col gap-1.5">
           <label className="text-xs font-medium">Monthly Rent</label>

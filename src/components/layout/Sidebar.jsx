@@ -64,12 +64,12 @@ function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 flex flex-col gap-1.5 overflow-y-auto">
-        {navItems.map((item) => (
+        {navItems.map(({ id, icon, label, path }) => (
           <NavItem
-            key={item.id}
-            icon={item.icon}
-            label={item.label}
-            path={item.path}
+            key={id}
+            icon={icon}
+            label={label}
+            path={path}
           />
         ))}
       </nav>

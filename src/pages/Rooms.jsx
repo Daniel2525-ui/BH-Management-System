@@ -11,11 +11,16 @@ function Rooms({ rooms, setRooms, tenants }) {
   const addRoom = () => {
     const newErrors = {};
 
-    if (!roomNumber.trim()) {
+    const trimmedRoomNumber = roomNumber.trim();
+    const trimmedRent = rent.trim();
+
+    if (!trimmedRoomNumber) {
       newErrors.roomNumber = "Room number is required";
+    } else if (!/^\d+$/.test(trimmedRoomNumber)) {
+      newErrors.roomNumber = "Room number must contain numbers only";
     }
 
-    if (!rent.trim()) {
+    if (!trimmedRent) {
       newErrors.rent = "Monthly rent is required";
     }
 
@@ -26,7 +31,7 @@ function Rooms({ rooms, setRooms, tenants }) {
 
     const roomExists = rooms.some(
       (room) =>
-        room.roomNumber.toLowerCase() === roomNumber.trim().toLowerCase(),
+        room.roomNumber.toLowerCase() === trimmedRoomNumber.toLowerCase(),
     );
 
     if (roomExists) {
@@ -38,8 +43,8 @@ function Rooms({ rooms, setRooms, tenants }) {
 
     const newRoom = {
       id: crypto.randomUUID(),
-      roomNumber: roomNumber.trim(),
-      rent: Number(rent),
+      roomNumber: trimmedRoomNumber,
+      rent: Number(trimmedRent),
       tenantId: null,
     };
 
@@ -49,7 +54,7 @@ function Rooms({ rooms, setRooms, tenants }) {
     setRent("");
     setErrors({});
   };
-
+  
   const deleteRoom = (id) => {
     if (!confirm("Delete Room?")) return;
 
