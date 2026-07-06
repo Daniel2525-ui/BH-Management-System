@@ -13,12 +13,21 @@ function Tenants({ tenants, setTenants }) {
   const addTenant = () => {
     const newErrors = {};
 
-    if (!fullName.trim()) {
+    const trimmedFullName = fullName.trim();
+    const trimmedPhoneNumber = phoneNumber.trim();
+
+    if (!trimmedFullName) {
       newErrors.fullName = "Full name is required";
     }
 
-    if (!phoneNumber.trim()) {
+    if (!trimmedPhoneNumber) {
       newErrors.phoneNumber = "Phone number is required";
+    } else if (Number(trimmedPhoneNumber) < 0) {
+      newErrors.phoneNumber = "Phone number cannot be negative";
+    } else if (trimmedPhoneNumber.length !== 11) {
+      newErrors.phoneNumber = "Phone number must contain exactly 11 digits";
+    } else if (!/^\d+$/.test(trimmedPhoneNumber)) {
+      newErrors.phoneNumber = "Phone number must contain numbers only";
     }
 
     if (!address.trim()) {

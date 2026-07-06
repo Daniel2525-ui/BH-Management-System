@@ -6,8 +6,6 @@ import Dashboard from "./pages/Dashboard";
 import Rooms from "./pages/Rooms";
 import Tenants from "./pages/Tenants";
 import Payments from "./pages/Payments";
-import Reports from "./pages/Reports";
-import Settings from "./pages/Settings";
 
 function App() {
   const [rooms, setRooms] = useState([]);
@@ -20,7 +18,12 @@ function App() {
 
       <section className="flex-1 p-6">
         <Routes>
-          <Route path="/" element={<Dashboard />} />
+          <Route
+            path="/"
+            element={
+              <Dashboard rooms={rooms} tenants={tenants} payments={payments} />
+            }
+          />
           <Route
             path="/rooms"
             element={
@@ -42,8 +45,6 @@ function App() {
               />
             }
           />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/settings" element={<Settings />} />
         </Routes>
       </section>
     </div>

@@ -32,6 +32,10 @@ function RoomForm({
             {errors.roomNumber && (
               <p className="text-red-500 text-xs">{errors.roomNumber}</p>
             )}
+
+            {errors.negativeRoomNumber && (
+              <p className="text-red-500 text-xs">{errors.negativeRoomNumber}</p>
+            )}
           </div>
 
           {/* Monthly Rent */}
@@ -48,6 +52,10 @@ function RoomForm({
 
             {errors.rent && (
               <p className="text-red-500 text-xs">{errors.rent}</p>
+            )}
+
+            {errors.negativeRent && (
+              <p className="text-red-500 text-xs">{errors.negativeRent}</p>
             )}
           </div>
         </div>

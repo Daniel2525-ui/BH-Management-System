@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import RoomCard from "./../components/rooms/RoomCard.jsx";
 import RoomForm from "../components/rooms/RoomForm.jsx";
+import DashboardCards from "../components/dashboard/DashboardCards.jsx";
 
 function Rooms({ rooms, setRooms, tenants }) {
   const [roomNumber, setRoomNumber] = useState("");
@@ -16,12 +17,18 @@ function Rooms({ rooms, setRooms, tenants }) {
 
     if (!trimmedRoomNumber) {
       newErrors.roomNumber = "Room number is required";
+    } else if (Number(trimmedRoomNumber) < 0) {
+      newErrors.roomNumber = "Room number cannot be negative";
     } else if (!/^\d+$/.test(trimmedRoomNumber)) {
       newErrors.roomNumber = "Room number must contain numbers only";
     }
 
     if (!trimmedRent) {
       newErrors.rent = "Monthly rent is required";
+    }
+
+    if (Number(trimmedRent) < 0) {
+      newErrors.negativeRent = "Rent number cannot be negative";
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -60,7 +67,9 @@ function Rooms({ rooms, setRooms, tenants }) {
     setRooms((prevRooms) => prevRooms.filter((room) => room.id !== id));
   };
 
-  {/* Find tenant by it's Id for later to validate same tenant that is already assigned to a room */}
+  {
+    /* Find tenant by it's Id for later to validate same tenant that is already assigned to an existing room */
+  }
   const getTenantById = (tenantId) => {
     return tenants.find((tenant) => tenant.id === tenantId);
   };

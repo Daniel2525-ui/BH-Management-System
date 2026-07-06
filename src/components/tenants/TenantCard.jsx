@@ -1,4 +1,5 @@
 import React from "react";
+import { Trash2 } from "lucide-react";
 
 function TenantCard({ tenant, deleteTenant }) {
   return (
@@ -16,9 +17,10 @@ function TenantCard({ tenant, deleteTenant }) {
 
         <button
           onClick={() => deleteTenant(tenant.id)}
-          className="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 text-red-500 cursor-pointer"
+          title="Delete Tenant"
+          className="p-2 rounded-lg hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
         >
-          Delete
+          <Trash2 size={16} />
         </button>
       </div>
     </section>

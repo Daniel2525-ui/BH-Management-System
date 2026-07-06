@@ -36,18 +36,6 @@ function Sidebar() {
       path: "/payments",
       icon: <CreditCard size={18} />,
     },
-    {
-      id: "reports",
-      label: "Reports",
-      path: "/reports",
-      icon: <FileText size={18} />,
-    },
-    {
-      id: "settings",
-      label: "Settings",
-      path: "/settings",
-      icon: <Settings size={18} />,
-    },
   ];
 
   return (
@@ -65,12 +53,7 @@ function Sidebar() {
       {/* Nav */}
       <nav className="flex-1 px-3 py-4 flex flex-col gap-1.5 overflow-y-auto">
         {navItems.map(({ id, icon, label, path }) => (
-          <NavItem
-            key={id}
-            icon={icon}
-            label={label}
-            path={path}
-          />
+          <NavItem key={id} icon={icon} label={label} path={path} />
         ))}
       </nav>
     </div>
